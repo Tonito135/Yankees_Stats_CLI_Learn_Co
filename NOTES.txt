@@ -1,0 +1,49 @@
+Sports related CLI for FlatIron
+    Doing Baseball Team, New York Yankees
+    Going to use ESPN, much easier to scrape info than MLB (At least in my Opinion)
+
+As a user I want to be able to:
+    See the stats of the yankees in the current 2020 Post Season (Maybe regular season)
+    Ability to choose between postion player or pitcher
+    After what is chosen, then I can see the players in the specific catagory
+        Will show me regular info, Name and Position
+    As a user i want to be able to disect that player
+        Will get an info on BA/ERA, HR Tally, Etc.
+
+Going to give the user the option of exiting the program without seeing stats
+
+UPDATE 
+
+10/10/20
+@12:02am 
+    I may have bit off a bit more than i can chew, deciding on just showcasing
+    the players info right from the jump. Maybe down the line i can make it more 
+    advanced
+
+@3:25am
+    Tomorrow, or should i say later, i need to see how to get pithers to print
+    actual pitchers instead of it running the first thing in self.current and that
+    being "Aaron Judge".
+
+10/11/20
+@3:00am 
+    For submission sake, i might need to maybe only use info for one of two players
+    per position. 
+
+@3:25am
+    yea... im bugging out. Just going to keep it simple maybe just Yankee star players
+    hardcode their info in and then i can disect their info (maybe only like 4-5 ppl)
+
+10/12/20
+@7:16pm
+    Going to give user info on team leaders and their positions. then going to allow user
+    to input what number they prefer more info on (1-5). My first option was too ambitious
+    and very complex.. :(
+
+    Only going to use info on average, HR's, and RBis for position players
+    for pitchers i'll use ERA, GP, W/L
+
+    I'll def changed the user method into an if, elseif statement. Its much cleaner than using
+    case statements, yet i love using them lol
+
+    

@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+require './lib/Yankees_Stats'
+#require 'bundler/setup'
+
+
+YankeesStats::CLI.new.intro
