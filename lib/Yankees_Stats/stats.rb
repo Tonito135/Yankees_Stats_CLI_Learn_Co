@@ -20,10 +20,10 @@ attr_accessor :name, :position, :avg, :hr, :rbi, :obp
 
         player.name = doc.search("div.PlayerBanner__playerName--YNtth").text
         player.position = "2nd Baseman"
-        player.avg = ".364 Average"
+        player.avg = doc.search("div.PlayerBanner__statInfo--32jgE").first.text
         player.hr = "10 Homeruns"
         player.rbi = "27 RBI"
-        player.obp = "0.421 OBP"
+        player.obp = doc.search("div.PlayerBanner__statInfo--32jgE").last.text
 
         player
     end
@@ -35,15 +35,13 @@ attr_accessor :name, :position, :avg, :hr, :rbi, :obp
 
         player.name = doc.search("div.PlayerBanner__playerName--YNtth").text
         player.position = "1st Baseman"
-        player.avg = ".277 Average"
+        player.avg = doc.search("div.PlayerBanner__statInfo--32jgE").first.text
         player.hr = "22 Homeruns"
         player.rbi = "52 RBI"
-        player.obp = "0.338 OBP"
+        player.obp = doc.search("div.PlayerBanner__statInfo--32jgE").last.text
         
         player
     end
-
-
 end
 
 
@@ -84,3 +82,13 @@ end
 #team_leader_5.winloss = "1/1 W/L"
 #
 #[team_leader_1, team_leader_2, team_leader_3, team_leader_4, team_leader_5]
+
+
+    #def self.player
+#
+    #end
+#
+    #def self.player
+    #    self.scrape_voit_detailed_stats.
+#
+    #end
