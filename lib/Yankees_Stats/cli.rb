@@ -39,9 +39,9 @@ class YankeesStats::CLI
         while input != "exit"
             puts "Would you like more info on someone? If so type their number, if not type no.."
             input = gets.strip.downcase
-            if input.to_i > 0 
+            if input.to_i > 0 && input.to_i <= @stats.length
                 detailed_stats = @stats[input.to_i - 1]
-                puts "#{detailed_stats.name} is a #{detailed_stats.position} with a #{detailed_stats.avg}. He has hit #{detailed_stats.hr} with #{detailed_stats.rbi}. He has a #{detailed_stats.obp}"
+                puts "#{detailed_stats.name} is a #{detailed_stats.position} with a #{detailed_stats.avg} average. He has hit #{detailed_stats.hr} with #{detailed_stats.rbi}. He has a #{detailed_stats.obp} OBP."
             elsif input == "no"
                 conclusion
             else
