@@ -44,7 +44,11 @@ class YankeesStats::CLI
             if input.to_i > 0 && input.to_i <= Leader.all.length
                 detailed_stats = Leader.all[input.to_i - 1]
                 puts "#{detailed_stats.player_name} leads the league in #{detailed_stats.title.downcase} with #{detailed_stats.stat} being its #{detailed_stats.title.downcase}."
+                puts "---------------------------"
+                puts "Here are the league titles:"
+                puts "---------------------------"
                 league_title
+                puts "---------------------------"
             elsif input == "no"
                 conclusion
             else
