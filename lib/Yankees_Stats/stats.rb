@@ -1,46 +1,27 @@
 class YankeesStats::Stats
-attr_accessor :name, :position, :avg, :hr, :rbi, :obp
+attr_accessor :title, :player_name, :stat
 
-    def self.current
-        self.scrape_stats
-    
-    end
-    
-    def self.scrape_stats
-        stats = []
-        stats << self.scrape_dj_detailed_stats
-        stats << self.scrape_voit_detailed_stats
-        stats           
-    end
-
-    def self.scrape_dj_detailed_stats
-        doc = Nokogiri::HTML(open("https://www.thescore.com/mlb/players/2093/stats"))
+    def self.scrape_players
+        doc = Nokogiri::HTML(open("https://www.thescore.com/mlb/leaders"))
         
-        player = self.new
+        #document.querySelectorAll(".LeadersCard__title--VxUYA")[0].textContent
+        #document.querySelectorAll(".LeadersCard__card--3lVyQ")[0]
+        #leaders[0].css(".LeadersCard__title--VxUYA")[2]
 
-        player.name = doc.search("div.PlayerBanner__playerName--YNtth").text
-        player.position = "2nd Baseman"
-        player.avg = doc.search("div.PlayerBanner__statInfo--32jgE").first.text
-        player.hr = "10 Homeruns"
-        player.rbi = "27 RBI"
-        player.obp = doc.search("div.PlayerBanner__statInfo--32jgE").last.text
-
-        player
-    end
-
-    def self.scrape_voit_detailed_stats
-        doc = Nokogiri::HTML(open("https://www.thescore.com/mlb/players/5630/stats"))
+        leaders = doc.css(".LeadersGrid__cardContainer--35Wst")
         
-        player = self.new
-
-        player.name = doc.search("div.PlayerBanner__playerName--YNtth").text
-        player.position = "1st Baseman"
-        player.avg = doc.search("div.PlayerBanner__statInfo--32jgE").first.text
-        player.hr = "22 Homeruns"
-        player.rbi = "52 RBI"
-        player.obp = doc.search("div.PlayerBanner__statInfo--32jgE").last.text
-        
-        player
+        leaders.each do |leaders_group|
+            leaders_group.css(".LeadersCard__card--3lVyQ").each do |card|
+                stat_title = card.children[0].children[0].text
+                player_name = card.css(".LeadersCard__leader--2ViSJ").children[0].children[0].children[0].children[0].children[0].children[0].children[0].children[0].attributes["alt"].value
+                player_stat = card.css(".LeadersCard__stat--158EL").children[0]
+                leader = Leader.new
+                leader.player_name = player_name
+                leader.title = stat_title
+                leader.stat = player_stat
+                leader
+            end
+        end
     end
 end
 
